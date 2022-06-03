@@ -1,9 +1,13 @@
 const express = require('express')
 
 const router = express.Router()
+const {nanoid}=require('nanoid');
+const contacts=require('../../models/contacts');
+console.log(contacts[1]);
 
 router.get('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
+  const contacts=await contacts.listContacts()
+  res.json(contacts)
 })
 
 router.get('/:contactId', async (req, res, next) => {
