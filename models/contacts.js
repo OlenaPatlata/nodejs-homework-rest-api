@@ -9,7 +9,7 @@ const listContacts = async () => {
 }
 
 const updateListAllContacts = async (data)=>{
-  await fs.writeFile(filePath,JSON.stringify(data, null, 2));
+  await fs.writeFile(filePath, JSON.stringify(data, null, 2));
 }
 
 const getContactById = async (contactId) => {
@@ -31,6 +31,7 @@ const addContact = async (body) => {
 const removeContact = async (contactId) => {
   const allContacts=await listContacts();
   const index=allContacts.findIndex(contact=>contact.id===contactId);
+  if(index===-1){return null};
   const deletedContact=allContacts.splice(index,1);
   await updateListAllContacts(allContacts);
   return deletedContact;
@@ -39,7 +40,10 @@ const removeContact = async (contactId) => {
 const updateContact = async (contactId, body) => {
   const allContacts=await listContacts();
   const index=allContacts.findIndex(contact=>contact.id===contactId);
-  console.log(index);
+  if(index===-1){return null};
+  allContacts[index]={...body, id:contactId};
+  await updateListAllContacts(allContacts);
+  return allContacts[index];
 }
 
 module.exports = {
