@@ -8,7 +8,8 @@ const {createError}=require('../../helpers/index');
 const joiSchema=Joi.object({
   name: Joi.string().min(2).required(),
   email: Joi.string().email().required(),
-  phone: Joi.number().required()
+  phone: Joi.number().required(),
+  favorite: Joi.boolean()
 })
 
 router.get('/', async (req, res, next) => {
