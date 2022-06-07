@@ -8,13 +8,14 @@ const {createError}=require('../../helpers/index');
 const joiSchema=Joi.object({
   name: Joi.string().min(2).required(),
   email: Joi.string().email().required(),
-  phone: Joi.number().required(),
-  favorite: Joi.boolean()
+  phone: Joi.string().required(),
+  favorite: Joi.boolean().required()
 })
+const joiSchema2=Joi.object({favorite:Joi.boolean().required()})
 
 router.get('/', async (req, res, next) => {
   try {
-    const result=await Contact.find();
+    const result=await Contact.find({"favorite": false});
     res.status(200).json(result);
   } catch (error) {
     next(error);
@@ -76,5 +77,22 @@ try {
   next(error);
 }
 });
+
+router.patch('/:contactId', async (req, res, next) => {
+  try {
+    const {error}=joiSchema2.validate(req.body);
+      if(error){
+        throw createError(400, error.message);
+      };
+    const {contactId}=req.params;
+      const result=await Contact.findByIdAndUpdate(contactId, req.body);
+      if(!result){
+        throw createError(404, `Contact with id: ${contactId} didn't find`);
+      }
+      res.json(result);
+  } catch (error) {
+    next(error);
+  }
+  });
 
 module.exports = router;
