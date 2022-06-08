@@ -13,6 +13,6 @@ mongoose.connect(CONNECT)
     .catch((err)=>{
         console.log(err.message);
         process.exit(1)}
-    );
+);
 
 
