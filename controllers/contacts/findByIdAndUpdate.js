@@ -1,4 +1,4 @@
-const Contact=require('../../models/contact');
+const {Contact}=require('../../models/contact');
 const {createError}=require("../../helpers/index");
 
 const findByIdAndUpdate=async (req, res) => {
@@ -8,6 +8,6 @@ const findByIdAndUpdate=async (req, res) => {
           throw createError(404, `Contact with id: ${contactId} didn't find`);
         }
         res.json(result);
-    };
+};
 
-    module.exports=findByIdAndUpdate;
+module.exports=findByIdAndUpdate;
