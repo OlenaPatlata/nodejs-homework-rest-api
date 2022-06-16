@@ -9,7 +9,7 @@ const {schemas}=require('../../models/user');
 router.post('/register', validation(schemas.registerUser), ctrlWrapper(ctrl.register));
 
 // Аутентификация ()логин)
-router.post('/login', ()=>{})
+router.post('/login', validation(schemas.loginUser), ctrlWrapper(ctrl.login) )
 // Получение текущего пользователя
 
 

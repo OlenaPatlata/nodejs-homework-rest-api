@@ -21,7 +21,7 @@ const schemas={
 const userShema=Schema({
     name: {type:String, required: [true, 'Set name for user'], uniqu: true},
     email: {type:String, required:true, uniqu: true, match:emailRegexp},
-    password: {type:String, required:true, uniqu: true}
+    password: {type:String, required:true}
 }, {versionKey:false, timestamps:true});
 
 const User=model('user', userShema);
