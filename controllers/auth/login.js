@@ -13,9 +13,10 @@ const login=async (req, res)=>{
         throw createError(401, "Wrong password")
     };
     const token="asdf.asdrf.asgdf";
-        res.json({
+    res.json({
         token,
-        user:{email:user.email}
+        user:{email: user.email,
+        subscription: user.subscription }
     });
 }
 
