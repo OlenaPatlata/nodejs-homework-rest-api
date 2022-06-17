@@ -13,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', routes.auth);
+app.use('/api/users', routes.users);
 app.use('/api/contacts', routes.contacts);
 
 app.use((req, res) => {
