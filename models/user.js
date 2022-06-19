@@ -8,7 +8,7 @@ const registerUser= Joi.object({
     email: Joi.string().required().pattern(emailRegexp),
     password: Joi.string().min(6).required(),
     subscription: Joi.string().default("starter").valid(...group),
-    token: Joi.string().default(null)
+    token: Joi.string().default('')
 });
 
 const loginUser= Joi.object({
@@ -26,7 +26,7 @@ const userShema=Schema({
     email: {type:String, required:[true, 'Email is required'], uniqu: true, match:emailRegexp},
     password: {type:String, required:[true, 'Password is required']},
     subscription:{type:String, enum: group, default: "starter"},
-    token: {type:String, default: null}
+    token: {type:String, default: ''}
 }, {versionKey:false, timestamps:true});
 
 const User=model('user', userShema);

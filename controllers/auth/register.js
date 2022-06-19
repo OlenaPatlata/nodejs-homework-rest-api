@@ -1,6 +1,4 @@
 const bcrypt =require('bcryptjs');
-
-
 const { createError } = require('../../helpers');
 const {User}=require('../../models/user');
 
