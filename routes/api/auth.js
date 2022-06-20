@@ -14,8 +14,11 @@ router.post('/login', validation(schemas.loginUser), ctrlWrapper(ctrl.login));
 // Получение текущего пользователя
 router.get('/current', authenticate, ctrlWrapper(ctrl.getCurrent));
 
-
+// logout
 router.get('/logout', authenticate, ctrlWrapper(ctrl.logout));
+
+// Обновление подписки (subscription)
+router.patch('/update', authenticate, validation(schemas.updateSubUser), ctrlWrapper(ctrl.updateSubscription))
 
 
 module.exports=router;

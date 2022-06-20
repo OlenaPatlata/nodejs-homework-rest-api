@@ -15,10 +15,14 @@ const loginUser= Joi.object({
     email: Joi.string().required().pattern(emailRegexp),
     password: Joi.string().min(6).required()
 });
+const updateSubUser=Joi.object({
+    subscription:Joi.string().valid(...group)
+});
 
 const schemas={
     registerUser,
-    loginUser
+    loginUser,
+    updateSubUser
 };
 
 const userShema=Schema({
