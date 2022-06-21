@@ -4,7 +4,7 @@ const validation=(schema)=>{
     const func=(req, res, next)=>{
         try {
             const {error}=schema.validate(req.body);
-            if(error){
+                if(error){
                 throw createError(400, error.message);
             }
             next();
