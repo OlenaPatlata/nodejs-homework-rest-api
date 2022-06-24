@@ -30,7 +30,8 @@ const userShema=Schema({
     email: {type:String, required:[true, 'Email is required'], uniqu: true, match:emailRegexp},
     password: {type:String, required:[true, 'Password is required']},
     subscription:{type:String, enum: group, default: "starter"},
-    token: {type:String, default: ''}
+    token: {type:String, default: ''},
+    avatarURL: {type:String, required:true}
 }, {versionKey:false, timestamps:true});
 
 const User=model('user', userShema);
