@@ -20,9 +20,7 @@ router.get('/logout', authenticate, ctrlWrapper(ctrl.logout));
 // Обновление подписки (subscription)
 router.patch('/update', authenticate, validation(schemas.updateSubUser), ctrlWrapper(ctrl.updateSubscription));
 
-router.post('/avatars', authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar));
-
-router.patch("/avatars", authenticate, ctrlWrapper(ctrl.updateAvatar));
-
+// Замена аватарки
+router.patch("/avatars", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar));
 
 module.exports=router;

@@ -45,16 +45,15 @@
 
     <script>
         const contactAddForm=document.getElementById("add-contact-form");
-        contactAddForm.addEventListener("submit", function(e){
+        const submitHandler =(e)=>{
             e.preventDefault();
-            console.log(this.elements.name.value);
-            const data=new FormData();
-            data.append("name", this.elements.name.value);
-            data.append("email", this.elements.email.value);
-            data.append("phone", this.elements.phone.value);
-            console.log(data);
-
-        })
+            const formData=new FormData(e.currentTarget);
+            formData.append("name", this.elements.name.value);
+            formData.append("email", this.elements.email.value);
+            formData.append("phone", this.elements.phone.value);
+            console.log(formData);
+}
+        contactAddForm.addEventListener("submit", submitHandler)
     </script>
 </body>
 </html>
