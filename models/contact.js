@@ -24,6 +24,7 @@ const contactSchema=Schema({
     phone: {type:String, required:true, uniqu: true},
     group: {type:String, enum:group, required:true},
     favorite: {type:Boolean, default:false},
+    // avatar: {type: },
     owner: {type: SchemaTypes.ObjectId, ref: 'user'}
 }, {versionKey:false, timestamps:true});
 
