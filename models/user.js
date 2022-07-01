@@ -18,9 +18,13 @@ const loginUser= Joi.object({
 const updateSubUser=Joi.object({
     subscription:Joi.string().valid(...group)
 });
+const verifyEmailSchema= Joi.object({
+    email: Joi.string().required().pattern(emailRegexp)
+});
 
 const schemas={
     registerUser,
+    verifyEmailSchema,
     loginUser,
     updateSubUser
 };
