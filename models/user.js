@@ -18,9 +18,13 @@ const loginUser= Joi.object({
 const updateSubUser=Joi.object({
     subscription:Joi.string().valid(...group)
 });
+const verifyEmailSchema= Joi.object({
+    email: Joi.string().required().pattern(emailRegexp)
+});
 
 const schemas={
     registerUser,
+    verifyEmailSchema,
     loginUser,
     updateSubUser
 };
@@ -31,7 +35,9 @@ const userShema=Schema({
     password: {type:String, required:[true, 'Password is required']},
     subscription:{type:String, enum: group, default: "starter"},
     token: {type:String, default: ''},
-    avatarURL: {type:String, required:true}
+    avatarURL: {type:String, required:true},
+    verify: {type: Boolean, default:false},
+    verificationToken: {type: String, required:[true, "Verify token is required"]}
 }, {versionKey:false, timestamps:true});
 
 const User=model('user', userShema);
