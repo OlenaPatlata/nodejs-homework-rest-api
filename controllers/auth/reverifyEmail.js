@@ -17,7 +17,7 @@ const reverifyEmail =async (req, res)=>{
     const mail={
         to:email,
         subject: 'Подтверждение email',
-        html: `<a target="_blank" href="http://localhost:3000/api/auth/verify/${verificationToken}">Veryfi email</a>`
+        html: `<a target="_blank" href="https://app-rest-api-node-contact.herokuapp.com/api/auth/verify/${verificationToken}">Veryfi email</a>`
     };
     await sendMail(mail);
     res.status(200).json("Verification email sent");
