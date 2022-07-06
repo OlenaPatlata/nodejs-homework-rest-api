@@ -1,0 +1,48 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Contacts API",
+        "description": "Contacts API",
+        "version": "1.0.1",
+        "contact": {
+            "name": "Olena",
+            "email": "elena.pat@ukr.net"
+            },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            }
+        },
+    "servers": [{
+        "url": "https://app-rest-api-node-contact.herokuapp.com/api",
+        "description": "Development server"
+    }],
+    "tags":[
+        {"name": "auth"},
+        {"name": "contacts"}
+    ],
+    "path":{ 
+            "/contacts": {
+            "get": {
+                "description": "Returns all contacts from the system that the user has access to",
+                "tags": ["contacts"],
+                "responses": {
+                "200": {          
+                    "description": "A list of contacts.",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "items": {
+                            "$ref": "#/components/schemas/Contacts"
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            }
+            }
+        }
+    
+}
