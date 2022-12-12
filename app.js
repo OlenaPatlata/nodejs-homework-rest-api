@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-
+app.use('/', routes.swagger);
 app.use('/api/auth', routes.auth);
 app.use('/api/contacts', routes.contacts);
 
